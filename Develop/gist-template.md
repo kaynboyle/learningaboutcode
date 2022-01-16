@@ -1,4 +1,4 @@
-# Title (replace with your title)
+# Learning About Code
 
 Introductory paragraph (replace this with your text)
 
@@ -23,21 +23,33 @@ Briefly summarize the regex you will be describing and what you will explain. In
 ## Regex Components
 
 ### Anchors
-
+^
+^\d+$ digits
+\s+$ white space 
+\a \z  - respective start and end
 ### Quantifiers
 
 ### OR Operator
-
+(a|b|c):(x|y|z)
 ### Character Classes
-
+[0,9] [A-Za-z_0-9]
 ### Flags
 
 ### Grouping and Capturing
+- (abc) "()"- capture group. Groups multiple tokens so that the group can later be used as    backreference or can have a substring extracted from it;
 
+- \1 - backreference group 1 for example - this is usefull so you don't have to repeat the character sequence you want to include. (remember DRY);
+
+- (?:abc) "(?:)" - non capturing group - you want to use parenthesis in your expression but you don't want to capture the group;
+
+- (?=abc) "(?=)"- positive lookahead - returns the instances that do include the elements. It will look out for abc for example but also abcd abdc but not zabc
+
+-a(?!b) "(?!)" - negative lookahead -you want to select all of something that does not include the element. It would return the instances that don't have b in them. will match to all not followed by b.
 ### Bracket Expressions
 
 ### Greedy and Lazy Match
-
+* + ? {}
+? is lazy
 ### Boundaries
 
 ### Back-references
@@ -47,3 +59,5 @@ Briefly summarize the regex you will be describing and what you will explain. In
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+[Github Profile](https://github.com/kaynboyle)
