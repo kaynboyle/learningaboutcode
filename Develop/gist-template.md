@@ -45,14 +45,30 @@ SO THAT I can understand the search pattern the regex defines
 
 -Managing the Scope of Analysis
 ### Anchors
-^ - start
+ /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+^ - start - this is used at the start of the regex email expression before the first character set
 $ -end 
+start / end of the string - carrot is the beginning while dollar sign is the end. 
+
+
+OTHER:
+
 ^\d+$ digits
 \s+$ white space 
-^abc$	start / end of the string - carrot is the beginning while dollar sign is the end. 
-    - for example "/^J/" would find something that STARTS with J.
 \b\B - word, not-word boundary
 ### Quantifiers
+{2,6}
+
+This shows a quantifier that indicates that between 2 and 6 of the tokens in that character set should be matched.
+The curly bracket quantified can also contain one number and doesn't have to contain a
+
+[\da-z\.-]+
+
++ - match one or more times. The plus is an instruction to match as many times as possible the items in the character set.
+
+
+OTHER: 
 {x , y}- curly brackets offer a range of number of items to get {2,3} is wanting to match between 2 and three items in the set
 { x} - curly bracket with just one value in it indicates the number of characters you are trying to match
 {y,} - match at least the number of y times 
@@ -61,8 +77,21 @@ $ -end
 ? - match zero or one time - lazy matching
 
 ### OR Operator
+No OR operators are used in the email checking Regex but..
+
 (a|b|c):(x|y|z) - | is the or operator, selects which token to match, matches for example the character (a) (b) or (c) OR then going to the other parenthesis x y or z.
 ### Character Classes
+ /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+EXAMPLE:
+
+[a-z0-9] - can match any character a-z any number range 0-9, can match to a or b or c or d ... so on 0 or 1 or 2 or 3 so on..
+[a-z0-9_\.-] can match any character a-z any number range 0-9 but now also includes "_", "-" or "." and the \ is used to select for the "." in the regex.
+\da-z\.-  - uses \d to match any digit character any letter a "." or "-"
+
+
+
+OTHER:
 d/ - matches to one character that character is a digit
 w/ - matches 
 s/ - selects for whitespace 
@@ -72,6 +101,9 @@ s/ - selects for whitespace
 [^abc] - NOT a b or c
 
 ### Flags
+
+THIS ISN'T USED IN THE SAMPLE REGEX BUT...
+some examples:
 i - case-insensitive search 
 g - returns all matches the default without this flag is to return the first one
 m - multiline mode of anchors eg. ^$m - enable m affects ^ and $ so that you can pick out items from different places on the line instead of just the beginning of the line
@@ -80,7 +112,8 @@ u - unicode support enabler. processes surrogate pairs - sometimes a character i
 y - sticky flag - finds the character at the exact position in the text.
 
 ### Grouping and Capturing
-- (abc) "()"- capture group. Groups multiple tokens so that the group can later be used as    back-reference or can have a substring extracted from it;
+([a-z0-9_\.-]+)
+"( )" - capture group. Groups multiple tokens so that the group can later be used as back-reference or can have a substring extracted from it or can have a quantifier attached;
 
 - \1 - back-reference group 1 for example - this is useful so you don't have to repeat the character sequence you want to include. (remember DRY);
 
@@ -104,6 +137,9 @@ y - sticky flag - finds the character at the exact position in the text.
 ### Back-references
 - \1 - back-reference group 1 for example - this is useful so you don't have to repeat the character sequence you want to include. (remember DRY);
 ### Look-ahead and Look-behind
+THIS ISN'T USED IN THE SAMPLE REGEX BUT...
+some examples:
+
 negative lookahead - a(?!b) - first letter (a) should not be followed by the second letter (b) - this regex searches for that situation
 positive lookahead -  a(?=b) -first letter (a) should be followed by the second letter (b) - this regex searches for that situation
 
